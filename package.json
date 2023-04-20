@@ -1,0 +1,21 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@types/node": "^18",
+    "@unocss/nuxt": "^0.51.5",
+    "@vueuse/core": "^10.0.2",
+    "nuxt": "^3.4.1",
+    "nuxt-icon": "^0.3.3"
+  },
+  "dependencies": {
+    "deta": "^1.1.0"
+  }
+}
