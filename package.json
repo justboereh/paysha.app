@@ -1,6 +1,7 @@
 {
   "name": "nuxt-app",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -9,13 +10,8 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@types/node": "^18",
-    "@unocss/nuxt": "^0.51.5",
-    "@vueuse/core": "^10.0.2",
-    "nuxt": "^3.4.1",
-    "nuxt-icon": "^0.3.3"
-  },
-  "dependencies": {
-    "deta": "^1.1.0"
+    "nuxt": "^3.9.1",
+    "vue": "^3.4.10",
+    "vue-router": "^4.2.5"
   }
 }
