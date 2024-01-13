@@ -1,16 +1,13 @@
 {
-  "$schema": "https://shadcn-vue.com/schema.json",
+  "$schema": "https://shadcn-svelte.com/schema.json",
   "style": "default",
-  "typescript": true,
   "tailwind": {
     "config": "tailwind.config.js",
-    "css": "assets/css/tailwind.css",
-    "baseColor": "zinc",
-    "cssVariables": true
+    "css": "src/app.pcss",
+    "baseColor": "zinc"
   },
-  "framework": "nuxt",
   "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils"
+    "components": "$lib/components",
+    "utils": "$lib/utils"
   }
 }
