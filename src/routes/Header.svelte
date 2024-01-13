@@ -1,10 +1,19 @@
 <script>
 	import { page } from '$app/stores';
 	import Logo from '$lib/logo/Full.svelte';
+	import Button from '$lib/components/ui/button/button.svelte';
 </script>
 
-<header class="h-14 border-b border-zinc-200 p-4">
-	<div class="mx-auto h-full max-w-7xl">
-		<a href="/"> <Logo class="h-full max-w-full" /></a>
+<header class="sticky top-0 h-14 border-b border-zinc-200 p-4 backdrop-blur">
+	<div class="relative mx-auto flex h-full max-w-7xl items-center justify-between">
+		<a class="h-full" href="/"> <Logo class="h-full max-w-full" /></a>
+
+		<div class="absolute left-1/2 -translate-x-1/2 transform">
+			<Button variant="link" href="/docs">Docs</Button>
+			<Button variant="link" href="https://github.com/justboereh/paysha.app">Github</Button>
+			<Button variant="link" href="/pricing">Pricing</Button>
+		</div>
+
+		<Button href="/signin">Sign in</Button>
 	</div>
 </header>

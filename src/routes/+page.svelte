@@ -3,7 +3,7 @@
 
 <svelte:head>
 	<title>Paysha</title>
-	<meta name="description" content="The budgeting app you will only need." />
+	<meta name="description" content="Budget at it's finest." />
 </svelte:head>
 
 <section></section>
