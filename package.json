@@ -10,7 +10,8 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"dk": "drizzle-kit"
 	},
 	"devDependencies": {
 		"@fontsource/fira-mono": "^4.5.10",
@@ -23,7 +24,6 @@
 		"@typescript-eslint/eslint-plugin": "^6.0.0",
 		"@typescript-eslint/parser": "^6.0.0",
 		"autoprefixer": "^10.4.16",
-		"drizzle-kit": "^0.20.12",
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.35.1",
@@ -42,17 +42,15 @@
 	"type": "module",
 	"dependencies": {
 		"@internationalized/date": "^3.5.1",
-		"@libsql/client": "0.4.0-pre.7",
-		"@lucia-auth/adapter-sqlite": "^2.0.1",
 		"bits-ui": "^0.14.0",
 		"clsx": "^2.1.0",
 		"cmdk-sv": "^0.0.13",
-		"drizzle-orm": "^0.29.3",
 		"embla-carousel-svelte": "8.0.0-rc19",
 		"formsnap": "^0.4.2",
-		"lucia": "^2.7.6",
 		"lucide-svelte": "^0.309.0",
 		"mode-watcher": "^0.1.2",
+		"pocketbase": "^0.20.2",
+		"radix-icons-svelte": "^1.2.1",
 		"svelte-sonner": "^0.3.11",
 		"sveltekit-superforms": "^1.13.2",
 		"tailwind-merge": "^2.2.0",

@@ -1,5 +1,6 @@
 <script>
 	import { page } from '$app/stores';
+	import { pb } from '$lib/pb';
 	import Logo from '$lib/logo/Full.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
 </script>
@@ -14,6 +15,10 @@
 			<Button variant="link" href="/pricing">Pricing</Button>
 		</div>
 
-		<Button href="/signin">Sign in</Button>
+		{#if pb.authStore.token}
+			<Button href="/dash">Dashboard</Button>
+		{:else}
+			<Button href="/signin">Sign in</Button>
+		{/if}
 	</div>
 </header>
