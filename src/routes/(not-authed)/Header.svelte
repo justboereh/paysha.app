@@ -1,8 +1,13 @@
 <script>
 	import { page } from '$app/stores';
-	import { pb } from '$lib/pb';
+	import { currentUser } from '$lib/pb';
 	import Logo from '$lib/logo/Full.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
+	import { onMount } from 'svelte';
+
+	let isMounted = false;
+
+	onMount(() => (isMounted = true));
 </script>
 
 <header class="sticky top-0 h-14 border-b border-zinc-200 p-4 backdrop-blur">
@@ -15,9 +20,9 @@
 			<Button variant="link" href="/pricing">Pricing</Button>
 		</div>
 
-		{#if pb.authStore.token}
+		{#if $currentUser && isMounted}
 			<Button href="/dash">Dashboard</Button>
-		{:else}
+		{:else if isMounted}
 			<Button href="/signin">Sign in</Button>
 		{/if}
 	</div>

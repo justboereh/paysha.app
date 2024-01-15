@@ -4,7 +4,9 @@
 	import { GithubLogo } from 'radix-icons-svelte';
 	import { goto } from '$app/navigation';
 
-	async function Signin() {
+	if (pb.authStore.token) goto('/dash');
+
+	async function SignIn() {
 		const auth = await pb.collection('users').authWithOAuth2({ provider: 'github' });
 
 		if (!auth) return;
@@ -14,7 +16,7 @@
 </script>
 
 <div>
-	<Button on:click={Signin}>
+	<Button on:click={SignIn}>
 		<GithubLogo class="mr-2 h-6 w-6" />
 
 		Sign in with Github

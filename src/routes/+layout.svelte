@@ -1,14 +1,5 @@
-<script lang="ts">
-	import Header from './Header.svelte';
-	import '../app.pcss';
-	import './styles.css';
-
+<script>
+	import '@/style.css';
 </script>
 
-<div class="app">
-	<Header></Header>
-
-	<main>
-		<slot />
-	</main>
-</div>
+<slot />
