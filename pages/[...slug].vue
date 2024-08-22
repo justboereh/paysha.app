@@ -1,7 +1,7 @@
 <template>
   <container
     center="both"
-    :full="{ header: true }"
+    :full="{ header: true, footer: false }"
   >
     <h2 class="text-7xl text-red-500 font-bold">404</h2>
     <p>Can not find this page. Whoops!</p>

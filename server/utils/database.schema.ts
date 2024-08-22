@@ -1,15 +1,16 @@
 import { sqliteTable, text, blob } from 'drizzle-orm/sqlite-core'
+import { nanoid } from 'nanoid'
 
-export const user = sqliteTable('user', {
+export const userSchema = sqliteTable('user', {
   id: text('id').primaryKey(),
   // other user attributes
 })
 
-export const session = sqliteTable('user_session', {
+export const sessionSchema = sqliteTable('user_session', {
   id: text('id').primaryKey(),
   userId: text('user_id')
     .notNull()
-    .references(() => user.id),
+    .references(() => userSchema.id),
   activeExpires: blob('active_expires', {
     mode: 'bigint',
   }).notNull(),
@@ -18,10 +19,27 @@ export const session = sqliteTable('user_session', {
   }).notNull(),
 })
 
-export const key = sqliteTable('user_key', {
+export const keySchema = sqliteTable('user_key', {
   id: text('id').primaryKey(),
   userId: text('user_id')
     .notNull()
-    .references(() => user.id),
+    .references(() => userSchema.id),
   hashedPassword: text('hashed_password'),
+})
+
+export const sheetSchema = sqliteTable('sheet', {
+  id: text('id')
+    .primaryKey()
+    .notNull()
+    .$defaultFn(() => nanoid()),
+  name: text('name').notNull(),
+})
+
+export const bookSchema = sqliteTable('book', {
+  id: text('id')
+    .primaryKey()
+    .notNull()
+    .$defaultFn(() => nanoid()),
+  name: text('name').notNull(),
+  sheets: text('sheets', { mode: 'json' }).references(() => sheetSchema.id),
 })

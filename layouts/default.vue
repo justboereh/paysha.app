@@ -1,38 +1,102 @@
 <script setup lang="ts">
-useHead({
-  title: 'Paysha',
+import type { Component } from 'vue'
+const isSearching = ref(false)
+const searchQuery = ref('')
+const searchRef = ref<{ $el: HTMLDivElement }>()
+const isCreatingBook = ref(false)
+const openedBook = useState('useOpenBook', () => '')
+
+const route = useRoute()
+const router = useRouter()
+
+watch(isSearching, async (v) => {
+  if (!searchRef.value) return
+
+  console.log(searchRef.value.$el)
+
+  await nextTick()
+
+  searchRef.value.$el[isSearching.value ? 'focus' : 'blur']()
+})
+
+onMounted(() => {
+  fetchBooks()
+})
+
+function newBook() {}
+
+watch(openedBook, (v)=> {
+ if (!v) return location.
 })
 </script>
 
 <template>
-  <header class="sticky top-0 h-14 border-b border-zinc-200 p-4 backdrop-blur">
-    <div class="relative mx-auto flex h-full max-w-7xl items-center justify-between">
-      <nuxt-link
-        class="h-full"
-        to="/"
-      >
-        <svg-logo class="h-full max-w-full" />
-      </nuxt-link>
+  <div class="sticky top-0 p-3 z-10">
+    <div class="rounded-lg border border-light shadow-md shadow-black/5 bg-white relative max-w-3xl mx-auto">
+      <div class="flex items-center p-1">
+        <u-dropdown
+          :items="[
+            [
+              { label: 'Shared with you', icon: 'i-ph-users-three', shortcuts: ['Y'] },
+              { label: 'Trash', icon: 'i-ph-trash', shortcuts: ['T'] },
+            ],
+            [
+              { label: 'Settings', icon: 'i-ph-gear', shortcuts: ['S'] },
+              { label: 'Help & Feedback', icon: 'i-ph-question', shortcuts: ['H'] },
+            ],
+          ]"
+          :popper="{
+            placement: 'bottom-start',
+          }"
+        >
+          <u-button
+            icon="i-ph-dots-nine"
+            color="gray"
+            variant="ghost"
+          />
+        </u-dropdown>
 
-      <div class="absolute left-1/2 -translate-x-1/2 transform flex gap-2">
-        <nuxt-link to="/docs">
-          <a-button type="text"> Documentation </a-button>
-        </nuxt-link>
+        <u-button
+          color="white"
+          variant="ghost"
+          class="flex-grow"
+          @click="isSearching = true"
+        >
+          Search for books
+        </u-button>
 
-        <nuxt-link to="https://github.com/justboereh/paysha.app">
-          <a-button type="text"> Github </a-button>
-        </nuxt-link>
-
-        <nuxt-link to="/pricing">
-          <a-button type="text"> Pricing </a-button>
-        </nuxt-link>
+        <u-button
+          icon="i-ph-file-plus"
+          color="gray"
+          variant="ghost"
+          @click="isCreatingBook = true"
+        />
       </div>
 
-      <nuxt-link :to="'/signin'">
-        <a-button type="primary"> Sign in </a-button>
-      </nuxt-link>
+      <div
+        v-show="isSearching"
+        :class="['flex items-center absolute w-full top-0 h-full bg-white rounded-lg p-1']"
+      >
+        <u-button
+          icon="i-ph-arrow-left"
+          color="gray"
+          variant="ghost"
+          @click=";(isSearching = false), (searchQuery = '')"
+        />
+
+        <u-input
+          ref="searchRef"
+          v-model="searchQuery"
+          type="text"
+          class="flex-grow"
+        />
+      </div>
     </div>
-  </header>
+  </div>
 
   <slot />
+
+  <u-modal v-model="isCreatingBook">
+    <create-book-container @close="isCreatingBook = false" />
+  </u-modal>
 </template>
